@@ -1,0 +1,5 @@
+package ProjectPractice
+
+func main() {
+
+}
