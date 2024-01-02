@@ -1,0 +1,23 @@
+goroutines are abstraction on top of threads, outnumbers threads by orders of magnitude
+Are scheduled by the go runtime not user/dev
+Go can have 100,000 goroutines for any given program and will generate as many as are needed
+can spawn new goroutines simply by using "go" keyword
+after goroutines are finished, they are cleaned up (removing via garbage collector)
+
+
+            \\\
+            GR == goroutine
+
+
+            ///
+
+https://www.linkedin.com/learning-login/share?account=26194554&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fapplied-concurrency-in-go%2Fthe-sync-waitgroup%3Ftrk%3Dshare_video_url%26shareId%3DUVsGKse4SXu867VxICCOIA%253D%253D
+*is non-blocking, can cause issues if blocking is needed (there are keywords to intentionally block)*
+    time imports/functions can be used to keep main thread from closing before GRs are done
+        time.Sleep(1*time.Second) // will make the fn wait 1 second
+    sync.WaitGroup can be used to wait for group of GRs to finish
+        var wg sync.WaitGroup // Initializes WaitGroup
+            func (wg *WaitGroup) Add(delta int) // adds GRs to wait for
+            func (wg *WaitGroup) Done() // used when GR finishes work
+            func (wg *WaitGroup) Wait() // blocks until counter reaches 0
+

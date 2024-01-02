@@ -1,0 +1,5 @@
+package concur
+
+func Concur() {
+
+}
